@@ -1,0 +1,19 @@
+[package]
+name = "soon-mdbx-sys"
+version = "1.0.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Idiomatic and safe MDBX wrapper with good licence"
+homepage = "https://www.soo.network/"
+repository = "https://github.com/soonl2/libmdbx-rs"
+
+[lib]
+name = "reth_mdbx_sys"
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]
+## temp pin <https://github.com/rust-lang/cc-rs/issues/963>
+cc = "=1.0.101"
+bindgen = { version = "0.69", default-features = false, features = ["runtime"] }

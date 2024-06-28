@@ -1,0 +1,51 @@
+[workspace]
+members = ["mdbx-sys"]
+
+[lib]
+name = "soon_libmdbx"
+
+[package]
+name = "soon-libmdbx"
+version = "1.0.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Idiomatic and safe MDBX wrapper with good licence"
+homepage = "https://www.soo.network/"
+repository = "https://github.com/soonl2/libmdbx-rs"
+
+
+[dependencies]
+bitflags = "2.4"
+byteorder = "1"
+derive_more = "0.99"
+indexmap = "2"
+libc = "0.2"
+parking_lot = "0.12"
+thiserror = "1.0"
+dashmap = { version = "6.0", features = ["inline"], optional = true }
+tracing = "0.1"
+
+ffi = { package = "soon-mdbx-sys", path = "./mdbx-sys" }
+
+[target.'cfg(not(windows))'.dependencies]
+libffi = "3.2.0"
+
+[features]
+default = []
+return-borrowed = []
+read-tx-timeouts = ["dashmap", "dashmap/inline"]
+
+[dev-dependencies]
+pprof = { version = "0.13", features = ["flamegraph", "frame-pointer", "criterion"] }
+criterion = "0.5"
+rand = "0.8"
+rand_xorshift = "0.3"
+tempfile = "3.9"
+
+[[bench]]
+name = "cursor"
+harness = false
+
+[[bench]]
+name = "transaction"
+harness = false
