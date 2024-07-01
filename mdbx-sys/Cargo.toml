@@ -15,5 +15,5 @@ libc = "0.2"
 
 [build-dependencies]
 ## temp pin <https://github.com/rust-lang/cc-rs/issues/963>
-cc = "=1.0.101"
+cc = "1.0"
 bindgen = { version = "0.69", default-features = false, features = ["runtime"] }
