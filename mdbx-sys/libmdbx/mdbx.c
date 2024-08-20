@@ -34980,6 +34980,7 @@ retry:
   }
 
   /* Lock against another process operating in without-lck or exclusive mode. */
+  return MDBX_RESULT_FALSE; 
   rc =
       lck_op(env->me_lazy_fd, op_setlk,
              (env->me_flags & MDBX_RDONLY) ? F_RDLCK : F_WRLCK, env->me_pid, 1);
